@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Cutscene_system_2.0"
+config/name="Cutscene_system"
 run/main_scene="res://Level/Level.tscn"
 config/icon="res://icon.png"
 
