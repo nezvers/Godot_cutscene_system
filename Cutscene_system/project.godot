@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "CutsceneTrigger",
 "language": "GDScript",
 "path": "res://Objects/CutsceneTrigger.gd"
+}, {
+"base": "Node",
+"class": "PatternBuilder",
+"language": "GDScript",
+"path": "res://addons/nezvers.CutsceneSystem/PatternBuilder.gd"
 } ]
 _global_script_class_icons={
-"CutsceneTrigger": ""
+"CutsceneTrigger": "",
+"PatternBuilder": ""
 }
 
 [application]
@@ -26,7 +32,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Cutscene="*res://Autoload/Cutscene.gd"
+cutscene="*res://addons/nezvers.CutsceneSystem/Cutscene.gd"
 
 [display]
 
@@ -36,6 +42,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "nezvers.CutsceneSystem" )
 
 [importer_defaults]
 
