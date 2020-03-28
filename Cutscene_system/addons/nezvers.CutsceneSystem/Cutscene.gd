@@ -38,6 +38,11 @@ func start(msg:Dictionary)->void:
 	trigger_pattern()
 	emit_signal("cutscene_started")
 
+func queue(msg:Dictionary)->void:
+	var duplicate: = msg.duplicate()
+	#Should be adding in right sequence since keys are in increasing order
+	for entry in duplicate:
+		pattern[pattern.size()] = duplicate[entry]
 
 func trigger_pattern()->void:
 	
@@ -46,7 +51,6 @@ func trigger_pattern()->void:
 	if !pattern.has(index): #reached the end of pattern order
 		clear_pattern()
 		return
-	
 	var method: Dictionary = pattern[index]
 	
 	#for some reasons it doesn't work with callv() here

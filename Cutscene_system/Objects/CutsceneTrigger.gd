@@ -7,9 +7,27 @@ var triggering_object: Object = null
 #New instance of cutscene pattern object
 var pattern = PatternBuilder.new()
 
-
 func _ready()->void:
 	connect("body_entered", self, "_on_Trigger_body_entered")
+
+#Used for testing queue_start
+func log(txt:String)->void:
+	print(txt)
+
+#Press ENTER to give queued pattern
+func _unhandled_input(event)->void:
+	if event.is_action_pressed("ui_accept"):
+		var tempPattern = PatternBuilder.new()
+		tempPattern.add_call_method(self, "log", ["Queue started"])\
+			.add_wait(0.2)\
+			.add_call_method(self, "set", ["modulate", Color(randf(), randf(), randf(), 1.0)])\
+			.add_wait(0.2)\
+			.add_call_method(self, "set", ["modulate", Color(1, 1, 1, 1.0)])\
+			.add_wait(0.2)\
+			.add_call_method(self, "log", ["Queue ended"])\
+			.done()
+		tempPattern.queue_start()
+		tempPattern.queue_free()
 
 
 #Create pattern list

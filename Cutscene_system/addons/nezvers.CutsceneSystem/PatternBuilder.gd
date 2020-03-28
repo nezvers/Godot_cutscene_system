@@ -16,6 +16,11 @@ func start()->void:
 	
 	cutscene.start(pattern)
 
+func queue_start()->void:
+	if cutscene.pattern.empty():
+		cutscene.start(pattern)
+	else:
+		cutscene.queue(pattern)
 
 #************** Add to pattern functions ***************
 
